@@ -1,4 +1,4 @@
-package learn.thread.test;
+package learn.concurrent.test;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;

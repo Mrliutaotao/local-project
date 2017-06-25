@@ -1,4 +1,4 @@
-package learn.thread.test;
+package learn.concurrent.test;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import java.util.Date;

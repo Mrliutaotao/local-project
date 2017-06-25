@@ -1,4 +1,4 @@
-package learn.thread.test;
+package learn.concurrent.test;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
