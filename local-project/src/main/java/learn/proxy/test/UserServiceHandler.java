@@ -17,7 +17,6 @@ public class UserServiceHandler implements InvocationHandler{
 	}
  
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		// TODO Auto-generated method stub
 		before();
 		method.invoke(target, args);	
 		return null;
