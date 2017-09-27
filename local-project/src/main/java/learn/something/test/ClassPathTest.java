@@ -12,10 +12,14 @@ import java.util.Date;
 public class ClassPathTest {
 
 	public static void main(String[] args) {
+		// 获取本地的环境
+		System.out.println(System.getenv());
 		// 取得根目录路径
 		String rootPath = new ClassPathTest().getClass().getResource("/").getFile().toString();
 		System.out.println(rootPath);
 		Date date = new Date();
 		System.out.println(date.getTime());
+		
+		 
 	}
 }
