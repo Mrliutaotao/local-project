@@ -1,22 +1,23 @@
 package learn.zookeeper.test;
 
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooDefs.Ids;
-import org.apache.zookeeper.data.Stat;
-
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.zookeeper.*;
+import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.WatchedEvent;
+import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.ZooDefs.Ids;
+import org.apache.zookeeper.data.Stat;
 
 /**
  *
  * @author: liutaotao
- * @date : 2017年7月7日下午4:35:17
+ * @date : 2017年9月30日下午2:15:13
  *
  */
-public class ZookeeperTest {
+public class ZookeeperLock {
 
 	// 以一个静态变量来模拟公共资源
 	private static int counter = 0;
@@ -38,7 +39,7 @@ public class ZookeeperTest {
 	// 线程实现类
 	static class CountPlus extends Thread {
 
-		private static final String LOCK_ROOT_PATH = "Locks";
+		private static final String LOCK_ROOT_PATH = "/Locks";
 		private static final String LOCK_NODE_NAME = "Lock_";
 
 		// 每个线程持有一个zk客户端，负责获取锁与释放锁
@@ -47,7 +48,7 @@ public class ZookeeperTest {
 		@Override
 		public void run() {
 
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 5; i++) {
 
 				// 访问计数器之前需要先获取锁
 				String path = getLock();
@@ -69,9 +70,9 @@ public class ZookeeperTest {
 		private String getLock() {
 			try {
 				// 创建EPHEMERAL_SEQUENTIAL类型节点
-				String lockPath = zkClient.create(LOCK_ROOT_PATH + "/" + LOCK_NODE_NAME,
-						Thread.currentThread().getName().getBytes(), Ids.OPEN_ACL_UNSAFE,
-						CreateMode.EPHEMERAL_SEQUENTIAL);
+				String path = LOCK_ROOT_PATH + "/" + LOCK_NODE_NAME;
+				String lockPath = zkClient.create(path, Thread.currentThread().getName().getBytes(),
+						Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
 				System.out.println(Thread.currentThread().getName() + " create path : " + lockPath);
 
 				// 尝试获取锁
@@ -153,7 +154,6 @@ public class ZookeeperTest {
 	}
 
 	public static void main(String[] args) throws Exception {
-
 		// 开启五个线程
 		CountPlus threadA = new CountPlus("threadA");
 		setZkClient(threadA);

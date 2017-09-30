@@ -1,15 +1,16 @@
 
 package learn.rocketmq;
 
+ 
+
+import java.util.Random;
+import java.util.concurrent.Semaphore;
+
 import com.alibaba.rocketmq.client.exception.MQClientException;
 import com.alibaba.rocketmq.client.producer.DefaultMQProducer;
 import com.alibaba.rocketmq.client.producer.SendCallback;
 import com.alibaba.rocketmq.client.producer.SendResult;
 import com.alibaba.rocketmq.common.message.Message;
- 
-
-import java.util.Random;
-import java.util.concurrent.Semaphore;
 
 
 /**
