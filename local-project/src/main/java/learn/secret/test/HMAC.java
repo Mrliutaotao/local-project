@@ -1,8 +1,14 @@
 package learn.secret.test;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+
 import javax.crypto.*;
 
-
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
@@ -34,8 +40,9 @@ public class HMAC {
 	public static String initMacKey() throws Exception {
 		KeyGenerator keyGenerator = KeyGenerator.getInstance(KEY_MAC);
 		SecretKey secretKey = keyGenerator.generateKey();
-		return BASE64.encryptBASE64(secretKey.getEncoded());
-	}
+		BASE64Encoder base64Encoder = new BASE64Encoder();
+        return base64Encoder.encodeBuffer(secretKey.getEncoded()); 
+ 	}
 
 	/**
 	 * HMAC加密 ：主要方法
@@ -46,8 +53,8 @@ public class HMAC {
 	 * @throws Exception
 	 */
 	public static String encryptHMAC(byte[] data, String key) throws Exception {
-
-		SecretKey secretKey = new SecretKeySpec(new BASE64().decryptBASE64(key), KEY_MAC);
+		byte [] kd =  (new BASE64Decoder()).decodeBuffer(key) ;
+		SecretKey secretKey = new SecretKeySpec(kd, KEY_MAC);
 		Mac mac = Mac.getInstance(secretKey.getAlgorithm());
 		mac.init(secretKey);
 		return new String(mac.doFinal(data));
@@ -55,8 +62,8 @@ public class HMAC {
 	}
 
 	public static String getResult1(String inputStr) {
-		String path = Tools.getClassPath();
-		String fileSource = path + "/file/HMAC_key.txt";
+		String path = "C:\\Users\\liutaotao\\Desktop";
+		String fileSource = path + "\\HMAC_key.txt";
 		System.out.println("=======加密前的数据:" + inputStr);
 		String result = null;
 		try {
@@ -64,7 +71,9 @@ public class HMAC {
 			String key = HMAC.initMacKey(); /* 产生密钥 */
 			System.out.println("Mac密钥:===" + key);
 			/* 将密钥写文件 */
-			Tools.WriteMyFile(fileSource, key);
+			FileOutputStream out = new FileOutputStream(new File(fileSource));   
+			out.write(key.getBytes());
+			// Tools.WriteMyFile(fileSource, key);
 			result = HMAC.encryptHMAC(inputData, key);
 			System.out.println("HMAC加密后:===" + result);
 		} catch (Exception e) {
@@ -75,13 +84,20 @@ public class HMAC {
 
 	public static String getResult2(String inputStr) {
 		System.out.println("=======加密前的数据:" + inputStr);
-		String path = Tools.getClassPath();
-		String fileSource = path + "/file/HMAC_key.txt";
+		String path = "C:\\Users\\liutaotao\\Desktop";
+		String fileSource = path + "\\HMAC_key.txt";
 		String key = null;
 		;
 		try {
 			/* 将密钥从文件中读取 */
-			key = Tools.ReadMyFile(fileSource);
+			StringBuilder result = new StringBuilder(); 
+			BufferedReader br = new BufferedReader(new FileReader(fileSource));
+			String s = null;
+	        while((s = br.readLine())!=null){//使用readLine方法，一次读一行
+	              result.append(System.lineSeparator()+s);
+	        }
+	        br.close();  
+			key = result.toString();// Tools.ReadMyFile(fileSource);
 			System.out.println("getResult2密钥:===" + key);
 		} catch (Exception e1) {
 			e1.printStackTrace();
@@ -108,32 +124,6 @@ public class HMAC {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+// 06cVeozxxHmjXvTWh+ROF8fl8/OVmw+EBxyxjmCh+vXXHirZyHoAUs9gnGyeSsdbmbYZlSxCPU/6IAl6fJfJKw==
 	}
-
-public class Base64 {
-
-    /**  
-     * BASE64解密  
-     *   
-     * @param key  
-     * @return  
-     * @throws Exception  
-     */  
-    public byte[] decryptBASE64(String key) throws Exception {   
-        return (new BASE64Decoder()).decodeBuffer(key);   
-    }   
-
-    /**  
-     * BASE64加密  
-     *   
-     * @param key  
-     * @return  
-     * @throws Exception  
-     */  
-    public String encryptBASE64(byte[] key) throws Exception {   
-    	BASE64Encoder base64Encoder = new BASE64Encoder();
-        return base64Encoder.encodeBuffer(key);   
-    }  
-}
 }
