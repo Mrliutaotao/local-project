@@ -1,5 +1,7 @@
 package learn.file.test;
 
+import java.util.Date;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPObject;
@@ -15,10 +17,13 @@ public class JustTest {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("outOrderId", "1");
 		jsonObject.put("status", "2");
+		jsonObject.put("modifyTime", new Date());
 		String msgBody = jsonObject.toJSONString();
 		JSONObject object = JSONObject.parseObject(msgBody);
 		String string = object.getString("outOrderId");
-		System.out.println(string);
+		Date s = object.getDate("modifyTime");
+
+		System.out.println(s);
 		System.out.println(object);
 	}
 }
