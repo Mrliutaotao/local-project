@@ -50,9 +50,8 @@ package learn.java.test;
 public class ConstructTest {
 
 	public static void main(String[] args) {
-		A a = new A();
-		System.out.println(a.aString);
-		B b = new B();
-		System.out.println(b.aString);
+		Children children1 = new Children();
+		System.out.println(children1.staticChildren);
+		//Children children2 = new Children();
 	}
 }

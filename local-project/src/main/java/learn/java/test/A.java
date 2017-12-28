@@ -9,7 +9,14 @@ public class A {
 	
 	String aString = "a";
 	
+	static String staticStringA = "staticA";
+	
+	static{
+		System.out.println(staticStringA);
+		System.out.println("static in a ");
+	}
+	
 	public A(){
-		this.aString = "b";
+		System.out.println("in a class");
 	}
 }
