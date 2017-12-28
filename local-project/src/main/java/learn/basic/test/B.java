@@ -1,4 +1,4 @@
-package learn.java.test;
+package learn.basic.test;
 /**
 *
 * @author: liutaotao
