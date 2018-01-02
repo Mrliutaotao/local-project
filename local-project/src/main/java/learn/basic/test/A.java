@@ -9,6 +9,18 @@ public class A {
 	
 	String aString = "a";
 	
+ 
+	static String staticString = "sta";
+	
+	static{
+		System.out.println(staticString);
+	}
+	
+	{
+		System.out.println(aString);
+		System.out.println(staticString);
+	}
+ 
 	static String staticStringA = "staticA";
 	
 	static{
@@ -16,7 +28,9 @@ public class A {
 		System.out.println("static in a ");
 	}
 	
+ 
 	public A(){
-		System.out.println("in a class");
-	}
+		System.out.println(aString);
+		System.out.println(staticString);
+ 	}
 }
