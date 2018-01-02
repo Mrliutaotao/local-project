@@ -1,5 +1,8 @@
 package learn.file.test;
 
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -7,6 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -21,7 +25,48 @@ import com.alibaba.fastjson.JSONPObject;
 *
 */
 public class JustTest {
-	public static void main(String[] args){
+	public static void main(String[] args) throws ParseException{
+		
+		Map<String,String> mqBosdyMap = new HashMap<String,String>();
+		mqBosdyMap.put("date","2017-11-28");
+		Object aJsonObject =  JSON.toJSON(mqBosdyMap);
+		System.out.println(aJsonObject);
+		
+		Long amtPay = 12430L;
+		String money = new BigDecimal(Double.toString(amtPay.doubleValue() / 1000)).setScale(4, BigDecimal.ROUND_HALF_UP).toString();
+
+ 
+		System.out.println(money);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = sdf.parse("2017-11-11");
+		String endTimeStr = sdf.format(date);
+		String endTime = endTimeStr + " 23:59:59";
+		sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		int  endDate = Integer.parseInt(date.getTime() / 1000 + "");
+		 
+		System.out.println(endDate);
+		
+		ClassLoader classLoader ;
+		
+ 		
+		String lll = null;
+		String fafd = lll + "";
+		System.out.println(fafd);
+		
+		int dafa = 0;
+		dafa ++;
+		
+		Map<String,String> mqBodyMap = new HashMap<String,String>();
+		mqBodyMap.put("userId",12700723+"");			
+		String msgsBody = JSON.toJSONString(mqBodyMap);
+		System.out.println(msgsBody);
+		 JSONObject jsonOsbject = JSON.parseObject(msgsBody);
+         Map<String, String> map = (Map) jsonOsbject;
+         Long userIds = Long.parseLong(map.get("userId"));
+ 		System.out.println(userIds);
+
+         
 		LinkedList<Integer> result = new LinkedList<Integer>();
 		result.add(10);
 		result.add(11);

@@ -50,9 +50,41 @@ package learn.basic.test;
 public class ConstructTest {
 
 	public static void main(String[] args) {
-		A a = new A();
-		System.out.println(a.aString);
-		B b = new B();
-		System.out.println(b.aString);
+		syso();
 	}
+	
+	static ConstructTest constructTest = new ConstructTest();
+	
+	static{
+		System.out.println("1");
+	}
+	
+	String a = "a";
+	static String b = "b";
+	
+	{
+		System.out.println("2");
+	}
+	
+	public ConstructTest() {
+		System.out.println("construct init");
+		System.out.println("3");
+		System.out.println("a=" + a + ",b=" + b);
+	} 
+	
+	public static void syso(){
+		System.out.println("4");
+	}
+	
+
+	
+	/**
+	 * 实例初始化不一定要在类初始化结束之后才开始初始化。
+	 * 2
+construct init
+3
+a=a,b=null
+1
+4
+	 */
 }

@@ -9,7 +9,19 @@ public class A {
 	
 	String aString = "a";
 	
-	public A(){
-		this.aString = "b";
+	static String staticString = "sta";
+	
+	static{
+		System.out.println(staticString);
 	}
+	
+	{
+		System.out.println(aString);
+		System.out.println(staticString);
+	}
+	
+	public A(){
+		System.out.println(aString);
+		System.out.println(staticString);
+ 	}
 }
