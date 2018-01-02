@@ -23,15 +23,15 @@ public class ListTest {
 		vector.add(null);
 		System.out.println(vector);
 		
-		/*LinkedList<Integer> linkedList = new LinkedList<Integer>();
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
 		linkedList.add(0);
 		linkedList.add(1);
-		System.out.println(linkedList);*/
+		System.out.println(linkedList);
 		
 		
 		
 		
-		/*List<Integer> aList = new ArrayList<Integer>();
+		List<Integer> aList = new ArrayList<Integer>();
 		new ArrayList();
 		aList.add(2);
 		aList.add(1);
@@ -42,7 +42,7 @@ public class ListTest {
 		System.arraycopy(aList.toArray(), 0, intArray, 0, 1);
 		Object[] aObjects = Arrays.copyOf(aList.toArray(),1);
 		System.out.println(aObjects);
-		System.out.println(intArray);*/
+		System.out.println(intArray);
 
 	}
 

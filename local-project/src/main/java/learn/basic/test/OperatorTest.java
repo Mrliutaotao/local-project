@@ -1,13 +1,12 @@
 package learn.basic.test;
-/**
-*
-* @author: liutaotao
-* @date  : 2017年11月27日下午7:21:19
-*
-*/
-public class test {
-	static int a = 1;
-	
+
+/** 
+ * Something can not be change
+ * @author:LiuTaotao
+ * @date:2017年12月30日下午10:40:36
+ * @desc:
+ */
+public class OperatorTest {
 	public static void main(String[] args) {
 		int a = -1;
 		System.out.println(Integer.toBinaryString(a));
@@ -26,5 +25,4 @@ public class test {
 		System.out.println(++f);
 				
 	}
-
 }
