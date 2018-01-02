@@ -50,8 +50,10 @@ package learn.basic.test;
 public class ConstructTest {
 
 	public static void main(String[] args) {
+ 
 		syso();
-	}
+ 		//Children children2 = new Children();
+ 	}
 	
 	static ConstructTest constructTest = new ConstructTest();
 	
