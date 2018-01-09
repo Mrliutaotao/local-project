@@ -17,7 +17,7 @@ import java.util.List;
 public class ArraysTest {
 	
 	public static void main(String[] args){
-		/*Integer [] array = {1,2,3};
+		Integer [] array = {1,2,3};
 		System.out.println(array.getClass().getName());
 		System.out.println(array.length);
 		List<Integer> intList = Arrays.asList(array);
@@ -25,8 +25,10 @@ public class ArraysTest {
 		intList.set(0, 0);
 		System.out.println(intList.size());
 		System.out.println(intList);
-		System.out.println(array);*/
+		System.out.println(array);
+		
 		ArrayList<Integer> arrayList = new ArrayList<>();
+		arrayList.iterator();
 		arrayList.add(2);
 		arrayList.add(1);
 		arrayList.add(3);
@@ -43,6 +45,12 @@ public class ArraysTest {
 		});
 		List<Integer> list = Collections.synchronizedList(arrayList);
 		System.out.println(arrayList);
+		
+		Comparator comparator = new Comparator<Integer>() {
+			public int compare(Integer o1, Integer o2) {
+ 				return o1.compareTo(o2);
+			}
+		};
 		
 	}
 }
