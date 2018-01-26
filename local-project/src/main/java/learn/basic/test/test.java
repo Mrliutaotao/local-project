@@ -1,4 +1,8 @@
 package learn.basic.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
 *
 * @author: liutaotao
@@ -9,6 +13,10 @@ public class test {
 	static int a = 1;
 	
 	public static void main(String[] args) {
+		List<String> dafd = new ArrayList<>();
+		List<String> ad = null;
+		dafd.addAll(ad);
+		
 		int a = -1;
 		System.out.println(Integer.toBinaryString(a));
 		System.out.println(a>>>2);

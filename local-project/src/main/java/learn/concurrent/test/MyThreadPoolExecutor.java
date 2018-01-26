@@ -50,4 +50,16 @@ public class MyThreadPoolExecutor {
 	public static ExecutorService defaultThreadPool = new ThreadPoolExecutor(5, 100, 60L, TimeUnit.SECONDS,
 			new LinkedBlockingQueue<Runnable>());
 
+	public static void threadPoolTest() {
+		defaultThreadPool.submit(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("a");
+			}
+		});
+	}
+	
+	public static void main(String [] args) {
+		threadPoolTest();
+	}
 }

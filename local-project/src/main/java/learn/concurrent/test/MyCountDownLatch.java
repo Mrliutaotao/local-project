@@ -33,8 +33,8 @@ public class MyCountDownLatch {
 			Runnable run = new Runnable() {
 				public void run() {
 					try {
-						System.out.println("inside thread");
 						begin.await();// 一直阻塞
+						System.out.println("Game Started");
 						Thread.sleep((long) (Math.random() * 10000));
 						System.out.println(Thread.currentThread().getName());
 						System.out.println("No." + NO + "arrived");
@@ -46,7 +46,7 @@ public class MyCountDownLatch {
 			};
 			exec.submit(run);
 		}
-		System.out.println("Game Start");
+		System.out.println("Game not Start");
 		begin.countDown();
 		end.await(); // 阻塞直到end计数为0才返回当前线程
 		/*

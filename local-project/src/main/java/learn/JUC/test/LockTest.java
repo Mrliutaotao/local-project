@@ -1,7 +1,5 @@
 package learn.JUC.test;
 
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -16,15 +14,22 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LockTest {
  	static  int staticValue = 0;
 	public static void main(String [] arg) throws InterruptedException{
-		Lock reentrantlock = new ReentrantLock();
+		// 非公平锁
+		Lock unfairReentrantlock = new ReentrantLock();
+		Lock fairReentrantLock = new ReentrantLock(true);
 		try {
-			reentrantlock.lock();
+			// 如果可以获取锁则返回,否则循环等待锁获取
+			// if (p == head && tryAcquire(arg)) {}
+			// 否则在成功之前，一直调用 tryAcquire(int) 将线程加入队列，线程可能重复被阻塞或不被阻塞。
+			unfairReentrantlock.lock();
+			fairReentrantLock.lock();
 		} catch (Exception e) {
 			 
 		}finally {
-			reentrantlock.unlock();
+			unfairReentrantlock.unlock();
+			fairReentrantLock.unlock();
 		}
-		Condition condition = reentrantlock.newCondition();
+		Condition condition = unfairReentrantlock.newCondition();
 		condition.await();
 
 		final int max = 10;
