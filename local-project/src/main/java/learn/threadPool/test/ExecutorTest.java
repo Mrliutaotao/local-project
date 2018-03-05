@@ -20,7 +20,6 @@ public class ExecutorTest {
 	public static void main(String [] args){
 		ExecutorService executeService = Executors.newFixedThreadPool(9);
 		Future<?> aFuture = (Future<?>) executeService.submit(new Runnable() {
-			@Override
 			public void run() {
 			System.out.println("aaa");
 			}
@@ -28,7 +27,6 @@ public class ExecutorTest {
 		System.out.println(aFuture.isDone());
 		
 		executeService.submit(new Callable<Feature>() {
-			@Override
 			public Feature call() throws Exception {
 				System.out.println("bbb");
 				return null;

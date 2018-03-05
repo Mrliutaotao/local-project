@@ -1,7 +1,11 @@
 package framework.spring.test;
 
+import java.lang.annotation.Annotation;
+
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 
 /**
 *
@@ -13,14 +17,21 @@ public class SpringTest {
 	
 	private static ClassPathXmlApplicationContext context;
 	
-	public static void main(String [] args) throws InterruptedException{
-		 
+	public static void main(String [] args) throws InterruptedException, ClassNotFoundException{
+		
+		BeanFactory bFactory = new XmlBeanFactory(new ClassPathResource("spring.xml"));
+		boolean isSigleton = bFactory.isSingleton("springBean");
+		System.out.println(isSigleton);
+		SpringBean beanFTest = (SpringBean) bFactory.getBean("springBean");
+		beanFTest.print("bean factory hello");
+ 		
+		
 		String[] configs = {"spring.xml"};
 		context = new ClassPathXmlApplicationContext(configs);
 		context.start();
 		Thread.sleep(1000L);
 		BeanFactory beanFactory = context.getBeanFactory();
-		SpringBeanTest beanTest = (SpringBeanTest) beanFactory.getBean("springBeanTest");
+		SpringBean beanTest = (SpringBean) beanFactory.getBean("springBean");
 		beanTest.print("bean hello");
  	}
 }

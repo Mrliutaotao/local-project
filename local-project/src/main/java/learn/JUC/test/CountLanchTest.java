@@ -15,7 +15,6 @@ public class CountLanchTest {
 	public static void main(String [] arg) throws InterruptedException{
 		CountLanchTest countLanchTest = new CountLanchTest();
 		countLanchTest.timecost(2,new Runnable() {
-			@Override
 			public void run() {
 				System.out.println("a");
 			}

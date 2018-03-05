@@ -10,7 +10,6 @@ public class MyThread {
 	@SuppressWarnings("static-access")
 	public static void main(String s[])  {
 		Thread thread = new Thread(new Runnable() {
-			@Override
 			public void run() {
 				int j = 0;
 				for (int i = 1; i < 10000; i++) {
