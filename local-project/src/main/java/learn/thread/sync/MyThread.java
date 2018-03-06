@@ -9,17 +9,18 @@ package learn.thread.sync;
 public class MyThread {
 	@SuppressWarnings("static-access")
 	public static void main(String s[]) {
-		System.out.println("thread");
-		new Thread(new B("thread0")).start();
+ 		new Thread(new B("thread0")).start();
 		new Thread(new B("thread1")).start();
 		new Thread(new B("thread2")).start();
 		new Thread(new B("thread3")).start();
+		
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		Thread current = Thread.currentThread();
+		System.out.println("deamon" + current.isDaemon());
 		System.out.println(current.getPriority());
 		System.out.println(current.getName());
 		System.out.println(current.activeCount());

@@ -1,7 +1,6 @@
 package learn.JUC.test;
 
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
+
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -16,9 +15,45 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LockTest {
  	static  int staticValue = 0;
 	public static void main(String [] arg) throws InterruptedException{
-		Lock reentrantlock = new ReentrantLock();
+		final Lock reentrantlock = new ReentrantLock();
+		Thread threadA = new Thread(new Runnable() {
+			public void run() {
+				try {
+					// reentrantlock.lock();
+					for (int i = 1; i < 1000; i++){
+						System.out.println("a");
+					}
+				} catch (Exception e) {
+
+				}finally {
+					// reentrantlock.unlock();
+				}
+			}
+		});
+		
+		Thread threadB = new Thread(new Runnable() {
+			public void run() {
+				try {
+					//reentrantlock.lock();
+					for (int i = 1; i < 1000; i++){
+						System.out.println("b");
+					}
+				} catch (Exception e) {
+
+				}finally {
+					// reentrantlock.unlock();
+				}
+			}
+		});
+		
+		threadA.start();
+		threadB.start();
+		threadA.join();
+		threadB.join();
+		
+		
 		try {
-			reentrantlock.lock();
+			
 		} catch (Exception e) {
 			 
 		}finally {
@@ -92,4 +127,9 @@ public class LockTest {
 		 * 1000000
 		 */
 	}
+	
+	private class myThread extends Thread{
+		
+	}
 }
+
