@@ -52,6 +52,7 @@ public class MyCyclicBarrier {
 			try {
 				Thread.sleep(times[0] * 1000);
 				System.out.println(now() + tourName + "Reached Shenzhen");
+				System.out.println(barrier.getNumberWaiting());
 				barrier.await();
 				Thread.sleep(times[1] * 1000);
 				System.out.println(now() + tourName + "Reached Guangzhou");
@@ -75,7 +76,7 @@ public class MyCyclicBarrier {
 		// 三个旅行团
 		CyclicBarrier barrier = new CyclicBarrier(3);
 		ExecutorService exec = Executors.newFixedThreadPool(3);
-		exec.submit(new Tour(barrier, "WalkTour", timeWalk));
+		exec.submit(new Tour(barrier, "WalkTour", timeWalk));		
 		exec.submit(new Tour(barrier, "SelfTour", timeSelf));
 		// 当我们把下面的这段代码注释后，会发现，程序阻塞了，无法继续运行下去。
 		exec.submit(new Tour(barrier, "BusTour", timeBus));

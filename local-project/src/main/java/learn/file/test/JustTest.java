@@ -1,5 +1,14 @@
 package learn.file.test;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,6 +20,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Locale.FilteringMode;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -25,7 +35,34 @@ import com.alibaba.fastjson.JSONPObject;
 *
 */
 public class JustTest {
-	public static void main(String[] args) throws ParseException{
+	public static void main(String[] args) throws ParseException, IOException{
+		
+		File oldFile = new File("C:\\Users\\liutaotao\\Desktop\\hf.txt");
+		if (!oldFile.exists() || oldFile.isDirectory()) {
+			throw new FileNotFoundException();
+		}
+		File newfile = new File("C:\\Users\\liutaotao\\Desktop\\hf2.txt");
+        if(!newfile.exists()){
+        	newfile.createNewFile();
+        }
+		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newfile)));
+
+		//  FileOutputStream out=new FileOutputStream(newfile,true);
+		BufferedReader br = new BufferedReader(new FileReader(oldFile));
+		String temp = null;
+		// StringBuffer sb = new StringBuffer();
+		temp = br.readLine();
+		while (temp != null) {
+			temp = "'" + temp + "',";
+			// out.write(temp.getBytes("utf-8"));
+			out.write(temp.toCharArray());
+			out.newLine();
+			out.flush();
+			temp = br.readLine();
+		}
+        out.close();
+        br.close();
+		        
 		
 		Map<String,String> mqBosdyMap = new HashMap<String,String>();
 		mqBosdyMap.put("date","2017-11-28");

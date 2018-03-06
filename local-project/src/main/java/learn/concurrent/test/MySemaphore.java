@@ -40,7 +40,7 @@ public class MySemaphore extends Thread{
 	}
 	public static void main(String args[]) {
 		ExecutorService list = Executors.newCachedThreadPool();
-		Semaphore position = new Semaphore(2);
+		Semaphore position = new Semaphore(2,true);
 		for (int i = 0; i < 10; i++) {
 			list.submit(new MySemaphore(i + 1, position));
 		}

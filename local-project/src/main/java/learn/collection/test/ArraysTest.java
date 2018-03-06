@@ -11,7 +11,7 @@ import java.util.List;
 /**
 *
 * @author: liutaotao
-* @date  : 2017年12月28日下午2:27:12
+* @date  : 2017骞�12鏈�28鏃ヤ笅鍗�2:27:12
 *
 */
 public class ArraysTest {
@@ -27,7 +27,7 @@ public class ArraysTest {
 		System.out.println(intList);
 		System.out.println(array);
 		
-		ArrayList<Integer> arrayList = new ArrayList<>();
+		ArrayList<Integer> arrayList = new ArrayList<Integer>();
 		arrayList.iterator();
 		arrayList.add(2);
 		arrayList.add(1);

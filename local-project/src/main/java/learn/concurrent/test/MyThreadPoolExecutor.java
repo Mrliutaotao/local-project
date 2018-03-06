@@ -54,4 +54,16 @@ public class MyThreadPoolExecutor {
 		ExecutorService executorService =  Executors.newFixedThreadPool(8);
 	}
 
+	public static void threadPoolTest() {
+		defaultThreadPool.submit(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("a");
+			}
+		});
+	}
+	
+	public static void main(String [] args) {
+		threadPoolTest();
+	}
 }
