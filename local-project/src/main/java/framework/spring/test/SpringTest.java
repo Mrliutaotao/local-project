@@ -22,9 +22,37 @@ public class SpringTest {
 		BeanFactory bFactory = new XmlBeanFactory(new ClassPathResource("spring.xml"));
 		boolean isSigleton = bFactory.isSingleton("springBean");
 		System.out.println(isSigleton);
+		
+		
 		SpringBean beanFTest = (SpringBean) bFactory.getBean("springBean");
 		beanFTest.print("bean factory hello");
  		
+		// meta Test
+		SpringMetaBean springMetaBean = (SpringMetaBean) bFactory.getBean("springMetaBean");
+		System.out.println(springMetaBean.getTestStr());
+		 
+		
+		// lookup Test
+		SpringLookupBean springLookupBean = (SpringLookupBean) bFactory.getBean("springLookupBean");
+		springLookupBean.showMe();
+		
+		//replaced-method Test
+		ChangeMethod changeMethod = (ChangeMethod) bFactory.getBean("changeMethod");
+		changeMethod.changeMe();
+		
+		// contructor
+		SpringConstructor springConstructor = (SpringConstructor) bFactory.getBean("springConstructor");
+		springConstructor.sayHello();
+		
+		// property
+		SpringProperty springProperty = (SpringProperty) bFactory.getBean("springProperty");
+		System.out.println(springProperty.getaInt());
+		System.out.println(springProperty.getaList());
+		System.out.println(springProperty.getaMap());
+		
+		
+		
+		
 		
 		String[] configs = {"spring.xml"};
 		context = new ClassPathXmlApplicationContext(configs);

@@ -17,7 +17,69 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
 ">
-	<bean id="springBean" class="framework.spring.test.SpringBean"  init-method = "init"></bean>
+	<!-- init-method -->
+	<bean id="springBean" class="framework.spring.test.SpringBean"
+	init-method="init"></bean>
+
+	<!-- meta -->
+	<bean id="springMetaBean" class="framework.spring.test.SpringMetaBean">
+		<meta key="testStr" value="lalal" />
+	</bean>
+
+	<!-- lookup-method -->
+	<bean id="springLookupBean" class="framework.spring.test.SpringLookupBean">
+		<lookup-method name="getBean" bean="teacher" />
+	</bean>
+	<bean id="teacher" class="framework.spring.test.Teacher"></bean>
+
+	<!-- replace-method -->
+	<bean id="changeMethod" class="framework.spring.test.ChangeMethod">
+		<replaced-method name="changeMe" replacer="springMethodReplacer"></replaced-method>
+	</bean>
+	<bean id="springMethodReplacer" class="framework.spring.test.SpringMethodReplacer"></bean>
+
+	<!-- contructor -->
+	<bean id="springConstructor" class="framework.spring.test.SpringConstructor">
+		<constructor-arg index="0">
+			<value>liutaotao</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>hello</value>
+		</constructor-arg>
+	</bean>
+
+	<!-- property -->
+	<bean id="springProperty" class="framework.spring.test.SpringProperty">
+		<property name="aInt">
+			<value>2</value>
+		</property>
+		<property name="aList">
+			<list>
+				<value>a</value>
+				<value>b</value>
+			</list>
+		</property>
+		<property name="aMap">
+			<map>
+				<entry key="first" value="the first"></entry>
+				<entry key="second" value="the second"></entry>
+			</map>
+		</property>
+	</bean>
+  
+  
+  <!-- <property name="interest">
+            <map>
+                <entry key="${rocketmq.topic.order}" value-ref="messageListener"></entry>
+                <entry key="${rocketmq.topic.loan}" value-ref="messageListener"></entry>
+                <entry key="${rocketmq.topic.gradloan}" value-ref="messageListener"></entry>
+                <entry key="${bill.record.success.topic}" value-ref="instalmentMessageListener"></entry>
+                <entry key="${bill.refund.success.topic}" value-ref="refundMessageListener"></entry>
+                <entry key="${bill.repay.success.topic}" value-ref="repayMessageListener"></entry>
+                <entry key="${trade.pay.result.topic}" value-ref="loanLenderResultMessageListener"></entry>
+                <entry key="${trade.serial.result.topic}" value-ref="tradeSerialResultMessageListener"></entry>
+            </map>
+        </property> -->
  	
 	<!-- <bean id="sysProperty"
           class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
