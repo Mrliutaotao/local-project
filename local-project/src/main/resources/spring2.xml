@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd
+http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+">
+	 <!-- circle init can not create in constructor -->
+	<!-- <bean id="circleBeanA" class="framework.spring.test.CircleBeanA" scope="singleton">
+	<constructor-arg index = "0" ref = "circleBeanB"/>
+	</bean>
+	<bean id="circleBeanB" class="framework.spring.test.CircleBeanB">
+	<constructor-arg index = "0" ref = "circleBeanA"/>
+	</bean> -->
+	
+	<!-- prototype 属性注入 error
+	<bean id="beanA" class="framework.spring.test.BeanA" scope="prototype">
+	<property name="beanB" ref ="beanB" />
+	</bean>
+	<bean id="beanB" class="framework.spring.test.BeanB" scope="prototype">
+	<property name="beanA" ref ="beanA" />
+	</bean> -->
+	
+	 <!-- singleton 属性注入  -->
+	<bean id="beanA" class="framework.spring.test.BeanA" scope="singleton">
+	<property name="beanB" ref ="beanB" />
+	</bean>
+	<bean id="beanB" class="framework.spring.test.BeanB" scope="singleton">
+	<property name="beanA" ref ="beanA" />
+	</bean>
+	
+
+</beans>

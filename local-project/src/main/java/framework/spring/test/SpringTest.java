@@ -50,10 +50,6 @@ public class SpringTest {
 		System.out.println(springProperty.getaList());
 		System.out.println(springProperty.getaMap());
 		
-		
-		
-		
-		
 		String[] configs = {"spring.xml"};
 		context = new ClassPathXmlApplicationContext(configs);
 		context.start();
