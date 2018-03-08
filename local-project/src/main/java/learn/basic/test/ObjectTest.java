@@ -18,10 +18,9 @@ public class ObjectTest {
 		MyObject myObject = new MyObject();
 		myObject.method();
  		System.out.println("da");
-		Object object1 = new Object();
+		final Object object1 = new Object();
 	 
 		Thread thread = new Thread(new Runnable() {			
-			@Override
 			public void run() {
 				synchronized (object1) {
 					System.out.println("syn 2 start ");
