@@ -1,4 +1,4 @@
-package framework.spring.test;
+package framework.spring.test.aop;
 
 public class SpringAOPBean {
 	

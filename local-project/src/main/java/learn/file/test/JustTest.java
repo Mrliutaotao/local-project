@@ -37,11 +37,11 @@ import com.alibaba.fastjson.JSONPObject;
 public class JustTest {
 	public static void main(String[] args) throws ParseException, IOException{
 		
-		File oldFile = new File("C:\\Users\\liutaotao\\Desktop\\hf.txt");
-		if (!oldFile.exists() || oldFile.isDirectory()) {
+		File oldFile = new File("C:\\Users\\AC\\Desktop\\resource.txt");
+		if (!oldFile.exists() ) {
 			throw new FileNotFoundException();
 		}
-		File newfile = new File("C:\\Users\\liutaotao\\Desktop\\hf2.txt");
+		File newfile = new File("C:\\Users\\AC\\Desktop\\destine.txt");
         if(!newfile.exists()){
         	newfile.createNewFile();
         }

@@ -1,4 +1,4 @@
-package framework.spring.test;
+package framework.spring.test.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
