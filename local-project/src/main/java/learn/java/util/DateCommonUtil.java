@@ -18,11 +18,19 @@ import java.util.List;
 public class DateCommonUtil {
 
 	public static void main(String[] args) {
+		SimpleDateFormat simpleDateFormat  = new SimpleDateFormat("yyyy-MM-dd");
+		Date repayDate = null;
+		try {
+			repayDate = simpleDateFormat.parse("2018-03-19");
+		} catch (ParseException e) {
+				e.printStackTrace();
+		}
 		
+		System.out.println(repayDate);
 		
 		String[] params = {"1","2","3"};
 		List<String> paList = Arrays.asList(params);
-		List<String> pdfaList = new ArrayList<>();
+		List<String> pdfaList = new ArrayList<String>();
 		pdfaList.add("1");
 		pdfaList.add("2");
 		pdfaList.add("3");

@@ -1,4 +1,4 @@
-package learn.proxy.test;
+package learn.proxy.test.jdk;
 
 public interface UserService {
 

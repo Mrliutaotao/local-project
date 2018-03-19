@@ -53,7 +53,8 @@ public class JustTest {
 		// StringBuffer sb = new StringBuffer();
 		temp = br.readLine();
 		while (temp != null) {
-			temp = "'" + temp + "',";
+			// temp = "'" + temp + "',";
+			temp = temp + ",";
 			// out.write(temp.getBytes("utf-8"));
 			out.write(temp.toCharArray());
 			out.newLine();
