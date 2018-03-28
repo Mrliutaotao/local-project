@@ -18,6 +18,17 @@ import java.util.List;
 public class DateCommonUtil {
 
 	public static void main(String[] args) {
+		
+		String money = "20302.12";
+		double fa = Double.parseDouble(money);
+		fa = fa * 1000;
+		System.out.println(fa);
+		Long mones = Math.round(fa);
+		System.out.println(mones);
+ 		
+		long adfa = Long.parseLong("2.2");
+		System.out.println(adfa);
+		
 		SimpleDateFormat simpleDateFormat  = new SimpleDateFormat("yyyy-MM-dd");
 		Date repayDate = null;
 		try {

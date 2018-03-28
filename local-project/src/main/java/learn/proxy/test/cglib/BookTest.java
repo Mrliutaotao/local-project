@@ -3,13 +3,13 @@ package learn.proxy.test.cglib;
 public class BookTest {
 	public static void main(String[] args) {
 		BookServiceBean bookService = BookServiceFactory.getInstance();
-	/*	doMethod(bookService);
+		doMethod(bookService);
 		
 		BookServiceBean service = BookServiceFactory.getProxyInstance(new MyCglibProxy("boss"));  
 		service.create();  
  		BookServiceBean service2 = BookServiceFactory.getProxyInstance(new MyCglibProxy("john"));  
 		service2.create(); 
-		*/
+		
 		BookServiceBean serviceFilter = BookServiceFactory.getAuthInstanceByFilter(new MyCglibProxy("jhon"));
 		serviceFilter.create();
 		BookServiceBean serviceFilter2 = BookServiceFactory.getAuthInstanceByFilter(new MyCglibProxy("jhon"));

@@ -7,7 +7,10 @@ import net.sf.cglib.proxy.NoOp;
 public class BookServiceFactory {
 	
 	private static BookServiceBean service = new BookServiceBean();
+	
+	private static MyCglibProxy2 proxy2 = new MyCglibProxy2("boss");
 
+	
 	private BookServiceFactory() {
 	}
 
@@ -26,7 +29,9 @@ public class BookServiceFactory {
 	
 	public static BookServiceBean getAuthInstanceByFilter(MyCglibProxy myProxy){    
 	     Enhancer en = new Enhancer();     
-	     en.setSuperclass(BookServiceBean.class);     
+	     en.setSuperclass(BookServiceBean.class);  
+	     // 选择哪个callBack是根据filter来的,0第一个,1第二个
+	     en.setCallbacks(new Callback[]{myProxy,proxy2}); 
 	     en.setCallbacks(new Callback[]{myProxy,NoOp.INSTANCE}); 
 	     // en.setCallbacks(new Callback[]{myProxy,myProxy}); 
 	     // en.setCallback(myProxy);     
