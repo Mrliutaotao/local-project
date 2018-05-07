@@ -45,6 +45,9 @@ public class JustTest {
         if(!newfile.exists()){
         	newfile.createNewFile();
         }
+        
+        
+        int a = 1;
 		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newfile)));
 
 		//  FileOutputStream out=new FileOutputStream(newfile,true);
